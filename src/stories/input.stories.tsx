@@ -1,6 +1,5 @@
-import React, {useRef, useState} from 'react';
+import React, {ChangeEvent, useRef, useState} from 'react';
 import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
 
 export default {
   title: 'input',
@@ -24,6 +23,26 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
 
     return <><input ref={inputRef} /><button onClick={save}>save</button>- actual value: {value}</>;
 
+}
+export const ControlledInput = () => {
+    let [parentValue,setParentValue]=useState('')
+return <input value={parentValue} onChange={(e)=>setParentValue(e.currentTarget.value)}/>
+}
+
+
+export const ControlledSelected = () => {
+    let [parentValue,setParentValue]=useState<string|undefined>('2');
+
+    const onChangeset=(e:ChangeEvent<HTMLInputElement>)=>{
+setParentValue(e.currentTarget.value)
+    }
+
+    return <select value={parentValue} >
+        <option >None</option>
+        <option value="1">Minsk</option>
+        <option value="2">Moscow</option>
+        <option value="3">Kiev</option>
+    </select>
 }
 // export const Emoji = () => (
 //   <Button onClick={action('clicked')}>
