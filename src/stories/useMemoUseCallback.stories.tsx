@@ -88,7 +88,9 @@
 //======================================
 
 import React, {useCallback, useMemo, useState} from 'react';
-import './App.css';
+import Rating from "../components/Rating/Rating";
+
+
 
 const Component1Counter = React.memo(
     (props: { count: number }) => {
@@ -113,8 +115,11 @@ const Component2Number = React.memo(
         )
     }
 )
+export default {
+    title: 'App',
+};
 
-function App() {
+export function App() {
     let [count, setCount] = useState(0);
     let [number, setNumber] = useState([1, 2, 3, 4, 5]);
 
@@ -143,4 +148,3 @@ function App() {
     );
 }
 
-export default App;
